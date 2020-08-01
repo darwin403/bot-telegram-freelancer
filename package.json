@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "axios": "^0.19.2",
+    "country-emoji": "^1.5.4",
+    "dayjs": "^1.8.31",
+    "dotenv": "^8.2.0",
+    "pg": "^8.3.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.3",
+    "sqlite3": "^5.0.0",
+    "telebot": "^1.4.1",
+    "telegraf": "^3.38.0"
+  }
+}
