@@ -17,17 +17,23 @@ const defaultEnvPath = path.join(__dirname, ".env");
 const localEnvPath = path.join(__dirname, ".env.local");
 
 const defaultEnv = dotenv.parse(fs.readFileSync(defaultEnvPath));
-const localEnv = dotenv.parse(fs.readFileSync(localEnvPath));
 
-// Overwrite .env.local with .env
-for (let k in localEnv) {
-  if (k in defaultEnv && !(k in process.env)) {
-    process.env[k] = localEnv[k];
+if (fs.existsSync(localEnvPath)) {
+  const localEnv = dotenv.parse(fs.readFileSync(localEnvPath));
+
+  // Overwrite .env.local with .env
+  for (let k in localEnv) {
+    if (k in defaultEnv && !(k in process.env)) {
+      process.env[k] = localEnv[k];
+    }
   }
 }
 
 dotenv.config({ path: defaultEnvPath });
-dotenv.config({ path: localEnvPath });
+
+if (fs.existsSync(localEnvPath)) {
+  dotenv.config({ path: localEnvPath });
+}
 
 if (process.env.DATABASE_URL) {
   /**********************
