@@ -61,7 +61,7 @@ if (process.env.DATABASE_URL) {
  * MODEL *
  *********/
 const Project = sequelize.define("Project", {
-  projectId: { type: DataTypes.NUMBER, allowNull: false, unique: true },
+  projectId: { type: DataTypes.INTEGER, allowNull: false, unique: true },
   notified: { type: DataTypes.BOOLEAN, default: false },
 });
 
